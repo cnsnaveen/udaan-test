@@ -13,5 +13,5 @@ public interface UserRepository extends MongoRepository<User, String> {
 
 	User findByIdAndRole(String id, Role role);
 
-	List<User> findByResultAndRole(String result, Role role);
+	List<User> findByPinCodeAndResultAndRole(String pinCode, String result, Role role);
 }

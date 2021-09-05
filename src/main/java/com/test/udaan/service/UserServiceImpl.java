@@ -116,11 +116,11 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public ZoneDto getZoneInfo(String pinCode) {
 		try {
-			List<User> users = userRepo.findByResultAndRole("positive", Role.USER);
+			List<User> users = userRepo.findByPinCodeAndResultAndRole(pinCode, "positive", Role.USER);
 			ZoneDto zoneDto = new ZoneDto();
 
 			zoneDto.setNumCases(users.size());
-			zoneDto.setZoneType(users.size() > 5 ? "RED" : users.size() < 5 ? "ORANGE" : "GREEN");
+			zoneDto.setZoneType(users.size() > 5 ? "RED" : (users.size() > 0 && users.size() <= 5) ? "ORANGE" : "GREEN");
 
 			return zoneDto;
 		} catch (Exception e) {
