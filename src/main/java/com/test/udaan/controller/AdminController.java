@@ -50,10 +50,10 @@ public class AdminController {
 	}
 
 	@GetMapping("getZoneInfo/{pincode}")
-	public ResponseEntity<?> getZoneInfo(@PathVariable String pinCode) {
+	public ResponseEntity<?> getZoneInfo(@PathVariable String pincode) {
 		try {
 
-			return new ResponseEntity<>(userService.getZoneInfo(pinCode), HttpStatus.OK);
+			return new ResponseEntity<>(userService.getZoneInfo(pincode), HttpStatus.OK);
 		} catch (GenericException e) {
 			return new ResponseEntity<GenericException>(
 					new GenericException(HttpStatus.BAD_REQUEST.toString(), e.getMessage()), HttpStatus.BAD_REQUEST);
